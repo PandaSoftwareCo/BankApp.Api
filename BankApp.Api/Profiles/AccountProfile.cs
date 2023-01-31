@@ -8,7 +8,9 @@ namespace BankApp.Api.Profiles
     {
         public AccountProfile()
         {
-            CreateMap<Account, AccountDto>().ReverseMap();
+            CreateMap<Account, AccountDto>()
+                .ForMember(dest => dest.AccountName, act => act.MapFrom(src => src.AccountName))
+                .ReverseMap();
         }
     }
 }

@@ -55,7 +55,8 @@ namespace BankApp.Data.Migrations
 
                     b.HasKey("AccountId");
 
-                    b.HasIndex("AccountName");
+                    b.HasIndex("AccountName")
+                        .IsUnique();
 
                     b.ToTable("Accounts", (string)null);
 
@@ -127,13 +128,13 @@ namespace BankApp.Data.Migrations
                     b.Property<int?>("AccountId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Amount")
+                    b.Property<decimal?>("Amount")
                         .HasColumnType("money");
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -324,6 +325,102 @@ namespace BankApp.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BankApp.Domain.Entities.Mileage", b =>
+                {
+                    b.Property<int>("MileageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MileageId"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MileageId");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("Mileage", (string)null);
+                });
+
+            modelBuilder.Entity("BankApp.Domain.Entities.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
+
+                    b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("BankApp.Domain.Entities.Vehicle", b =>
+                {
+                    b.Property<int>("VehicleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VehicleId"), 1L, 1);
+
+                    b.Property<string>("Make")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("VehicleId");
+
+                    b.ToTable("Vehicles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            VehicleId = 1,
+                            Make = "Honda",
+                            Model = "Civic",
+                            Year = 2018
+                        },
+                        new
+                        {
+                            VehicleId = 2,
+                            Make = "Honda",
+                            Model = "Civic",
+                            Year = 2022
+                        });
+                });
+
             modelBuilder.Entity("BankApp.Domain.Entities.Balance", b =>
                 {
                     b.HasOne("BankApp.Domain.Entities.Account", "Account")
@@ -351,6 +448,17 @@ namespace BankApp.Data.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("BankApp.Domain.Entities.Mileage", b =>
+                {
+                    b.HasOne("BankApp.Domain.Entities.Vehicle", "Vehicle")
+                        .WithMany("Mileage")
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Vehicle");
+                });
+
             modelBuilder.Entity("BankApp.Domain.Entities.Account", b =>
                 {
                     b.Navigation("Balances");
@@ -361,6 +469,11 @@ namespace BankApp.Data.Migrations
             modelBuilder.Entity("BankApp.Domain.Entities.Category", b =>
                 {
                     b.Navigation("BankTransactions");
+                });
+
+            modelBuilder.Entity("BankApp.Domain.Entities.Vehicle", b =>
+                {
+                    b.Navigation("Mileage");
                 });
 #pragma warning restore 612, 618
         }

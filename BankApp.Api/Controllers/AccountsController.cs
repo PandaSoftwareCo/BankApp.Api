@@ -30,9 +30,21 @@ namespace BankApp.Api.Controllers
 
         // GET: api/<AccountsController>
         [HttpGet]
-        public IAsyncEnumerable<Account> Get()
+        [Swashbuckle.AspNetCore.Annotations.SwaggerOperation("Retrieves all accounts")]
+        public async IAsyncEnumerable<Account> Get()
         {
-            return _accountRepository.Get();
+            await foreach(var item in _accountRepository.Get())
+            {
+                yield return item;
+            }
+            //return _accountRepository.Get();
+        }
+
+        // GET: api/<AccountsController>/GetWithDapper
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<Account>> GetWithDapper()
+        {
+            return await _accountRepository.GetWithDapper();
         }
 
         // GET api/<AccountsController>/5
@@ -44,9 +56,9 @@ namespace BankApp.Api.Controllers
 
         // POST api/<AccountsController>
         [HttpPost]
-        public async Task<ActionResult<Account>> Post([FromBody] Account value)
+        public async Task<ActionResult<AccountDto>> Post([FromBody] AccountDto value)
         {
-            _accountRepository.Add(value);
+            _accountRepository.Add(_mapper.Map<Account>(value));
             await _accountRepository.UnitOfWork.SaveChangesAsync();
 
             return CreatedAtAction("GetAccount", new { id = value.AccountId }, value);

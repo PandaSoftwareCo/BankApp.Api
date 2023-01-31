@@ -8,5 +8,6 @@ namespace BankApp.Application.Interfaces
 {
     public interface IAppSettings
     {
+        string Secret { get; set; }
     }
 }

@@ -1,4 +1,16 @@
 ﻿
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-6.0
+https://www.c-sharpcorner.com/article/measuring-and-reporting-the-response-time-of-an-asp-net-core-api/
+https://www.codeproject.com/Tips/5337523/Response-Time-Header-in-ASP-NET-Core
+https://codereview.stackexchange.com/questions/235812/accurately-measure-asp-net-core-3-x-actions-execution-times-web-api-project
+http://www.itlec.com/2020/06/timer-custom-header-webapi.html
+
+
+https://learn.microsoft.com/en-us/aspnet/core/performance/performance-best-practices?view=aspnetcore-6.0
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0
+https://learn.microsoft.com/en-us/aspnet/core/test/middleware?view=aspnetcore-6.0
+https://code-maze.com/aspnetcore-webapi-best-practices/
+https://stackoverflow.com/questions/41760875/how-to-improve-net-core-web-api-performance
 
 dotnet tool install --global dotnet-ef
 
@@ -9,6 +21,7 @@ dotnet ef dbcontext scaffold Name=ConnectionStrings:Chinook Microsoft.EntityFram
 drop-database -startupProject BankApp -project BankApp.Data -Context BankApp.Data.Context.BankContext
 remove-migration -startupProject BankApp -project BankApp.Data -Context BankApp.Data.Context.BankContext
 add-migration Initial -startupProject BankApp.Api -project BankApp.Data -Context BankApp.Data.Context.BankContext
+add-migration Identity -startupProject BankApp.Api -project BankApp.Data -Context BankApp.Data.Context.BankContext
 update-database -startupProject BankApp.Api -project BankApp.Data -Context BankApp.Data.Context.BankContext
 
 vue create vue-app
@@ -33,6 +46,10 @@ npm i @vuelidate/core @vuelidate/validators
  $ cd client-app
  $ npm run serve
 npm i vuetify@next @mdi/font
+
+
+docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+Install-Package MassTransit.RabbitMQ
 
 
 BankApp.Data
@@ -282,4 +299,109 @@ BankApp.Api
 Installing:
 
 Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.5.0.0
+
+BankApp.IntegrationTests
+
+Updates:
+
+System.Buffers.4.3.0 -> System.Buffers.4.5.1
+System.Diagnostics.DiagnosticSource.4.3.0 -> System.Diagnostics.DiagnosticSource.6.0.0
+
+Installing:
+
+Microsoft.AspNetCore.Mvc.Testing.6.0.0
+Microsoft.AspNetCore.TestHost.6.0.0
+Microsoft.Extensions.Configuration.6.0.0
+Microsoft.Extensions.Configuration.Abstractions.6.0.0
+Microsoft.Extensions.Configuration.Binder.6.0.0
+Microsoft.Extensions.Configuration.CommandLine.6.0.0
+Microsoft.Extensions.Configuration.EnvironmentVariables.6.0.0
+Microsoft.Extensions.Configuration.FileExtensions.6.0.0
+Microsoft.Extensions.Configuration.Json.6.0.0
+Microsoft.Extensions.Configuration.UserSecrets.6.0.0
+Microsoft.Extensions.DependencyInjection.6.0.0
+Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0
+Microsoft.Extensions.DependencyModel.6.0.0
+Microsoft.Extensions.FileProviders.Abstractions.6.0.0
+Microsoft.Extensions.FileProviders.Physical.6.0.0
+Microsoft.Extensions.FileSystemGlobbing.6.0.0
+Microsoft.Extensions.Hosting.6.0.0
+Microsoft.Extensions.Hosting.Abstractions.6.0.0
+Microsoft.Extensions.Logging.6.0.0
+Microsoft.Extensions.Logging.Abstractions.6.0.0
+Microsoft.Extensions.Logging.Configuration.6.0.0
+Microsoft.Extensions.Logging.Console.6.0.0
+Microsoft.Extensions.Logging.Debug.6.0.0
+Microsoft.Extensions.Logging.EventLog.6.0.0
+Microsoft.Extensions.Logging.EventSource.6.0.0
+Microsoft.Extensions.Options.6.0.0
+Microsoft.Extensions.Options.ConfigurationExtensions.6.0.0
+Microsoft.Extensions.Primitives.6.0.0
+System.Diagnostics.EventLog.6.0.0
+System.IO.Pipelines.6.0.0
+System.Memory.4.5.4
+System.Runtime.CompilerServices.Unsafe.6.0.0
+System.Text.Encodings.Web.6.0.0
+System.Text.Json.6.0.0
+
+BankApp.Api
+
+Installing:
+
+Microsoft.AspNetCore.Authentication.JwtBearer.6.0.0
+
+BankApp.Api
+
+Installing:
+
+Swashbuckle.AspNetCore.SwaggerUI.6.2.3
+
+BankApp.Api
+
+Installing:
+
+Swashbuckle.AspNetCore.Annotations.6.2.3
+
+BankApp.Api
+
+Installing:
+
+Microsoft.Extensions.Http.6.0.0
+
+BankApp.Api
+
+Uninstalling:
+
+Microsoft.Extensions.Http.6.0.0
+
+BankApp.Api
+
+Installing:
+
+Microsoft.EntityFrameworkCore.InMemory.6.0.0
+
+BankApp.Api
+
+Updates:
+
+Microsoft.Extensions.DependencyModel.3.0.0 -> Microsoft.Extensions.DependencyModel.6.0.0
+System.Text.Encodings.Web.4.7.2 -> System.Text.Encodings.Web.6.0.0
+System.Text.Json.5.0.2 -> System.Text.Json.6.0.0
+
+Installing:
+
+Microsoft.Data.Sqlite.Core.6.0.0
+Microsoft.EntityFrameworkCore.Sqlite.6.0.0
+Microsoft.EntityFrameworkCore.Sqlite.Core.6.0.0
+SQLitePCLRaw.bundle_e_sqlite3.2.0.6
+SQLitePCLRaw.core.2.0.6
+SQLitePCLRaw.lib.e_sqlite3.2.0.6
+SQLitePCLRaw.provider.e_sqlite3.2.0.6
+
+BankApp.UnitTests
+
+Installing:
+
+Castle.Core.5.1.0
+Moq.4.18.3
 

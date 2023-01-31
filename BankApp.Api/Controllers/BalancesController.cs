@@ -34,6 +34,13 @@ namespace BankApp.Api.Controllers
             return _balanceRepository.Get();
         }
 
+        // GET: api/<BalancesController>/GetWithDapper
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<Balance>> GetWithDapper()
+        {
+            return await _balanceRepository.GetWithDapper();
+        }
+
         // GET api/<BalancesController>/5
         [HttpGet("{id}")]
         public async Task<Balance?> Get(int id)

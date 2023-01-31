@@ -21,7 +21,7 @@ namespace BankApp.Data.Configurations
 
             builder.Property(i => i.AccountName).IsRequired().HasMaxLength(100);
 
-            builder.HasIndex(i => i.AccountName);
+            builder.HasIndex(i => i.AccountName).IsUnique();
 
             builder.HasData(new[]
             {

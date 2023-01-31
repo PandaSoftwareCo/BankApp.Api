@@ -10,8 +10,8 @@ namespace BankApp.Api.Middleware
 
         public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
-            _next = next;
-            _logger = logger;
+            _next = next ?? throw new ArgumentNullException(nameof(next));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task InvokeAsync(HttpContext httpContext)
@@ -42,9 +42,9 @@ namespace BankApp.Api.Middleware
 
     public static class ExceptionMiddlewareExtensions
     {
-        public static void UseExceptionMiddleware(this WebApplication app)
+        public static IApplicationBuilder UseExceptionMiddleware(this IApplicationBuilder app)
         {
-            app.UseMiddleware<ExceptionMiddleware>();
+            return app.UseMiddleware<ExceptionMiddleware>();
         }
     }
 }

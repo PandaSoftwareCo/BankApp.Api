@@ -33,6 +33,14 @@ namespace BankApp.Api.Extensions
                     In = ParameterLocation.Header,
                     Description = "Basic authentication can be used only for AccessToken resource"
                 });
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.ApiKey,// SecuritySchemeType.Http,// SecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    //Scheme = "bearer",
+                    In = ParameterLocation.Header,
+                    Description = "Provide a token in the form 'Bearer {key}' to access a resource"
+                });
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Type = SecuritySchemeType.Http,// SecuritySchemeType.ApiKey,

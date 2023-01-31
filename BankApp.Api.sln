@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.Api", "BankApp.Api\BankApp.Api.csproj", "{6D53A0BC-9253-49EA-A3F6-DCD2F16E71AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApp.Api", "BankApp.Api\BankApp.Api.csproj", "{6D53A0BC-9253-49EA-A3F6-DCD2F16E71AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.Domain", "BankApp.Domain\BankApp.Domain.csproj", "{510B9085-E0C2-4457-87E4-D167D35D562B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApp.Domain", "BankApp.Domain\BankApp.Domain.csproj", "{510B9085-E0C2-4457-87E4-D167D35D562B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.Application", "BankApp.Application\BankApp.Application.csproj", "{2BD4CA4F-F2A3-40C9-AA28-F2F27B630E2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApp.Application", "BankApp.Application\BankApp.Application.csproj", "{2BD4CA4F-F2A3-40C9-AA28-F2F27B630E2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.Data", "BankApp.Data\BankApp.Data.csproj", "{7EE60DC6-4032-4102-BD4F-59C951C7D574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApp.Data", "BankApp.Data\BankApp.Data.csproj", "{7EE60DC6-4032-4102-BD4F-59C951C7D574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.Services", "BankApp.Services\BankApp.Services.csproj", "{2954C0A4-5962-4A2F-9129-832B69669681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApp.Services", "BankApp.Services\BankApp.Services.csproj", "{2954C0A4-5962-4A2F-9129-832B69669681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.IntegrationTests", "BankApp.IntegrationTests\BankApp.IntegrationTests.csproj", "{F7A7D2A9-8125-4525-A1B9-8F0917D6C5CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp.UnitTests", "BankApp.UnitTests\BankApp.UnitTests.csproj", "{6EE97BA2-0E1A-4298-B09B-42DF416AA3D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{2954C0A4-5962-4A2F-9129-832B69669681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2954C0A4-5962-4A2F-9129-832B69669681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2954C0A4-5962-4A2F-9129-832B69669681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A7D2A9-8125-4525-A1B9-8F0917D6C5CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A7D2A9-8125-4525-A1B9-8F0917D6C5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A7D2A9-8125-4525-A1B9-8F0917D6C5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A7D2A9-8125-4525-A1B9-8F0917D6C5CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE97BA2-0E1A-4298-B09B-42DF416AA3D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE97BA2-0E1A-4298-B09B-42DF416AA3D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE97BA2-0E1A-4298-B09B-42DF416AA3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE97BA2-0E1A-4298-B09B-42DF416AA3D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

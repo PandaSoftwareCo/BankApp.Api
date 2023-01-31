@@ -29,9 +29,16 @@ namespace BankApp.Api.Controllers
 
         // GET: api/<BankTransactionsController>
         [HttpGet]
-        public IAsyncEnumerable<BankTransaction> Get()
+        public IAsyncEnumerable<BankTransaction> Get([FromQuery] string term)
         {
             return _bankTransactionRepository.Get();
+        }
+
+        // GET: api/<BankTransactionsController>/GetWithDapper
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<BankTransaction>> GetWithDapper()
+        {
+            return await _bankTransactionRepository.GetWithDapper();
         }
 
         // GET api/<BankTransactionsController>/5

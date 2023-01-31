@@ -34,6 +34,13 @@ namespace BankApp.Api.Controllers
             return _categoryRepository.Get();
         }
 
+        // GET: api/<CategoriesController>/GetWithDapper
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<Category>> GetWithDapper()
+        {
+            return await _categoryRepository.GetWithDapper();
+        }
+
         // GET api/<CategoriesController>/5
         [HttpGet("{id}")]
         public async Task<Category?> Get(int id)

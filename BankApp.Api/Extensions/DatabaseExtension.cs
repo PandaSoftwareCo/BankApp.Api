@@ -6,11 +6,21 @@ namespace BankApp.Api.Extensions
 {
     public static class DatabaseExtension
     {
-        public static void AddDatabase(this WebApplicationBuilder builder)
+        public static void AddDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            builder.Services.AddDbContextPool<BankContext>(optionsAction: options =>
+            services.AddDbContextPool<BankContext>(optionsAction: options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), sqlOptions =>
+                //options.UseInMemoryDatabase("BankApp");
+                //options.UseSqlite("DataSource=:memory:", options =>
+                //{
+                //    options.MigrationsAssembly("BankApp.Data");
+                //});
+                //options.UseSqlite("Data Source=BankApp.sqlite3", options =>
+                //{
+                //    options.MigrationsAssembly("BankApp.Data");
+                //});
+
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), sqlOptions =>
                 {
                     sqlOptions.MigrationsAssembly("BankApp.Data");
                     sqlOptions.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);

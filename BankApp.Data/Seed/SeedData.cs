@@ -1,4 +1,6 @@
-﻿using BankApp.Data.Context;
+﻿using BankApp.Application.Interfaces;
+using BankApp.Data.Context;
+using BankApp.Domain.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,19 +24,18 @@ namespace BankApp.Data.Seed
             //    var accounts = System.Text.Json.JsonSerializer.Deserialize<Account[]>(accountString);
             //}
 
-            //if (!context.Users.Any())
-            //{
-            //    var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-            //    var user = new User
-            //    {
-            //        FirstName = "James",
-            //        LastName = "Bond",
-            //        UserName = "007",
-            //        Password = "test",
-            //        Role = "User"
-            //    };
-            //    userService.AddUser(user, "test");
-            //}
+            if (!context.Users.Any())
+            {
+                var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+                var user = new User
+                {
+                    Username = "007",
+                    //FirstName = "James",
+                    //LastName = "Bond",
+                    Role = Domain.Enums.Role.User
+                };
+                userService.AddUser(user, "test");
+            }
         }
     }
 }
